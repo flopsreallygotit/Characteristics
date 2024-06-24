@@ -1,7 +1,9 @@
 from aiogram import Router
 
-from aiogram.types   import Message
+from aiogram.types   import Message, InlineKeyboardButton
 from aiogram.filters import Command
+
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from database import db
 
@@ -9,28 +11,30 @@ from database import db
 
 router = Router()
 
-def get_arguments(text: str) -> dict:
-    return dict(map(lambda *args: args, 
-                    ["command", "username", "characteristic", "value"], # TODO Looks cringy
-                    text.split()))
+@router.message(Command("start"))
+async def start(message: Message):
+    builder = InlineKeyboardBuilder().add(
+        InlineKeyboardButton(text = "GitHub", url = "https://github.com/flopsreallygotit")
+        )
+    
+    await message.answer("More info about this bot:", 
+                         reply_markup = builder.as_markup())
 
 @router.message(Command("add"))
 async def add(message: Message):
-    arguments = get_arguments(message.text)
+    command, username, characteristic, value = message.text.split()
     
-    db.change_characteristic(arguments["username"],
-                             arguments["characteristic"],
-                             arguments["value"])
+    db.change_characteristic(username, characteristic, value)
     
     await message.reply("Characteristic saved!")
     
-    db.save_database() # TODO Save with frequency + Del fix
+    db.save_database() # TODO Save with frequency
 
 @router.message(Command("show"))
-async def add(message: Message):
-    arguments = get_arguments(message.text)
+async def show(message: Message):
+    command, username = message.text.split()
 
-    characteristics = db.receive_characteristics(arguments["username"])
+    characteristics = db.receive_characteristics(username)
     await message.reply(characteristics)
     
     db.save_database()

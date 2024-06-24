@@ -1,7 +1,5 @@
 import json
 
-from config import bot_config
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 class Database:
@@ -25,7 +23,7 @@ class Database:
             with open(filename, "x") as db_file:
                 pass
 
-    def change_characteristic(self, username: str, characteristic: str, value) -> None:
+    def change_characteristic(self, username: str, characteristic: str, value: str) -> None:
         self.__data[username] = {characteristic: value}
 
     def receive_characteristics(self, username: str) -> str:
@@ -38,6 +36,6 @@ class Database:
     def __del__(self):
         self.save_database()
 
-db = Database(bot_config.db_filename)
-
+db: Database = None # Can't initialize db here, because __del__ will work incorrectly in case of asyncio usage
+                    # So I do init and del in main
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

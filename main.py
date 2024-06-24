@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 
 from config   import bot_config
-from database import db
+from database import db, Database
 
 import handlers
 
@@ -23,6 +23,10 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
+    db = Database(bot_config.db_filename)
+
     asyncio.run(main())
+
+    del db
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -5,8 +5,8 @@ Do you want to know what people think about you? Or maybe you want to leave a re
 ## Usage
 
 - ```/start```: Displays info about bot
-- ```/add```: Adds characteristic to user
-- ```/show```: Shows characteristics of user
+- ```/add <username> <characteristic> <value>```: Adds characteristic to user
+- ```/show <username>```: Shows characteristics of user
 
 ## Quick Start
 
