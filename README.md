@@ -41,5 +41,21 @@ python3 main.py
 ### Database format
 
 ```json
-
+{
+    "Flops": [
+        {"Stamina": "6"},
+        {"Strength": "5"},
+        {"Health": "7"},
+        {"Name": "Secret"}
+    ],
+    "OncomingLane": [
+        {"Stamina": "5"},
+        {"Strength": "6"},
+        {"Hobby": "Car_repair_works"}
+    ],
+    "AlexeyOsipov742": [
+        {"Health": "0"},
+        {"Hobby": "OncomingLane"}
+    ]
+}
 ```
