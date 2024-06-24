@@ -1,5 +1,9 @@
 import json
 
+from config import bot_config
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 class Database:
     __data = {}
 
@@ -26,7 +30,14 @@ class Database:
 
     def receive_characteristics(self, username: str) -> str:
         return json.dumps(self.__data[username])
-
-    def __del__(self):
+    
+    def save_database(self):
         with open(self.__filename, "w") as db_file:
             json.dump(self.__data, db_file)
+
+    def __del__(self):
+        self.save_database()
+
+db = Database(bot_config.db_filename)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
