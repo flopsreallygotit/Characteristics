@@ -17,12 +17,15 @@ Do you want to know what people think about you? Or maybe you want to leave a re
 ```config.env
 token = None
 
+frequency = 10
+
 db_filename = "users.json"
 
 protect_content = True 
 ```
 
 - ```token```: Token that you received from BotFather (Str)
+- ```frequency```: The number of requests after which the database will be flushed to the hard drive
 - ```db_filename```: Filename of database (Str)
 - ```protect_content```: Toggle forwarding messages (bool: True / False)
 
@@ -33,4 +36,10 @@ In example below all values are default.
 ```bash
 ./setup.sh
 python3 main.py
+```
+
+### Database format
+
+```json
+
 ```

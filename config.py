@@ -5,6 +5,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     token: SecretStr = None
+    
+    frequency: int = 10
 
     db_filename: str = "users.json"
 
