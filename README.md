@@ -17,15 +17,15 @@ Do you want to know what people think about you? Or maybe you want to leave a re
 ```config.env
 token = None
 
-frequency = 10
+max_query_count = 5
 
 db_filename = "users.json"
 
-protect_content = True 
+protect_content = False 
 ```
 
 - ```token```: Token that you received from BotFather (Str)
-- ```frequency```: The number of requests after which the database will be flushed to the hard drive
+- ```max_query_count```: The number of requests after which the database will be flushed to the hard drive
 - ```db_filename```: Filename of database (Str)
 - ```protect_content```: Toggle forwarding messages (bool: True / False)
 
