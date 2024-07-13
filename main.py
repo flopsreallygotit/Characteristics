@@ -1,4 +1,4 @@
-import asyncio, logging, atexit
+import asyncio, logging
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties

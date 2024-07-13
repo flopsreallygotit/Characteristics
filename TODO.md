@@ -1,14 +1,14 @@
-# TODO
+# TODO list
 
-## Main goals
+## Must
 - Make Notifications
 - Make Winner of Day
 - Test in chat
 
-## Additional goals
+## Should
 - Make clear command
 - Make bind for id
 
-## Future objectives
+## Maybe
 - Make Dockerfile
 - Make Timer Activation
